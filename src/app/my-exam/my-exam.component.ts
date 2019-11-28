@@ -19,7 +19,7 @@ export class MyExamComponent implements OnInit {
 
   }
 
-
+logger:any;
 
   itemArray=[];
   results$:Observable<any[]>
@@ -51,6 +51,7 @@ export class MyExamComponent implements OnInit {
      Result:this.data.result
     })
     this.toaster.info('new obj add')
+    
 
     this.itemArray=[];
   }
@@ -74,7 +75,7 @@ export class MyExamComponent implements OnInit {
 
 
 info(){
-  console.log(this.itemArray)
+console.log(this.itemArray)
 }
 editform($key){
   for(let value of this.itemArray){
@@ -107,7 +108,7 @@ editform($key){
 
 
     })
-  
+
 
      }
 }
