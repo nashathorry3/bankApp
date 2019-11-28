@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/signup",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

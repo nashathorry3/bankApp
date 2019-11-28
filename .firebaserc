@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "nashat-3925a"
+  },
+  "targets": {
+    "nashat-3925a": {
+      "hosting": {
+        "signup": [
+          "nashat-3925a"
+        ]
+      }
+    }
+  }
+}

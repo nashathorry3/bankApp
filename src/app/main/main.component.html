@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="../../assets/img/Student.png" width="30" height="30" alt="">
+      </a>
+  <a class="navbar-brand" routerLink='/my-exam'>My exam</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink='register' *ngIf='isLoggedIn' >Sign up</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+
+          <a class="nav-link"routerLink='/me'>About Me
+
+
+            <img src="../../assets/img/I.png" width="50" height="40" alt="" herf="">
+
+           </a>
+
+      </li>
+
+
+      </ul>
+<ng-template #anonymouseUser>
+  <div>
+    <a class ="nav-link"='/login'>Login
+
+    </a>
+  </div>
+</ng-template>
+      <div class="dropdown"  *ngIf='user else anonymouseUser' >
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        {{user.email}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" (click)="login()"  *ngIf='isLoggedIn'>Login</button>
+          <button class="dropdown-item" type="button" (click)="logout()">Logout </button>
+          <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+      </div>
+
+  </div>
+
+
+
+
+</nav>
+

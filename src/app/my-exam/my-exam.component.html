@@ -1,0 +1,199 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+      <img src="../../assets/img/Student.png" width="30" height="30" alt="">
+    </a>
+<a class="navbar-brand" routerLink='/my-exam'>My exam</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<a class="navbar-brand" routerLink='register' *ngIf='isLoggedIn' >Sign up</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+
+        <a class="nav-link"routerLink='/me'>About Me
+
+
+          <img src="../../assets/img/I.png" width="50" height="40" alt="" herf="">
+
+         </a>
+
+    </li>
+
+
+    </ul>
+
+
+    <div class="dropdown"  *ngIf='user else anonymouseUser' >
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+      {{user.email}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button" (click)="login()"  *ngIf='isLoggedIn'>Login</button>
+        <button class="dropdown-item" type="button" (click)="logout()">Logout </button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">My Exam</h1>
+      <p class="lead">Add new Exam Time
+        show the result
+      </p>
+   </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Name</span>
+            </div>
+            <input type="text" class="form-control"  name='fname'[(ngModel)]='data.fname'>
+            <input type="text" class="form-control" name='lname'[(ngModel)]='data.lname'>
+          </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Subject</span>
+          </div>
+          <div>
+          <input type="text" class="form-control" name='suject' [(ngModel)]='data.suject'>
+        </div>
+
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span  class="input-group-text" id="" >Result %   </span>
+          </div>
+          <div>
+          <input type="text" class="form-control"   name='result'[(ngModel)]='data.result'>
+        </div>
+        </div>
+
+
+
+        </div>
+
+      </div>
+
+          <div class="row">
+            <div class ="col-sm">
+                <button type="button" class="btn btn-secondary" (click)='adds()'>ADD</button>
+            </div>
+            <div>
+                <button class='btn btn-secondary' (click)="showResult()"> show</button>
+            </div>
+          </div>
+
+
+      <div class="col-sm">
+          <div class="card" style="width: 35rem;">
+            <img class="card-img-top" src="../../assets/img/exams-770x433.jpg" alt="Card image cap">
+            <div class="card-body">
+
+
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">Name:
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+
+                            <th scope="col">FirstName </th>
+                            <th scope="col">lastName </th>
+                            <th scope="col"> Result</th>
+                            <th scope="col"> subject</th>
+                            <th scope="col"> </th>
+                            <th scope="col"> </th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor= "let result of itemArray">
+
+                            <td>{{result.FirstName }}</td>
+                            <td>{{result.LastName}} </td>
+                            <td>{{result.Result}} </td>
+                            <td>{{result.SUBJECT}} </td>
+
+                            <td>
+
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"(click)="editform(result.$key)">Edit</button>
+
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title, text-success" id="exampleModalLabel " >Edit data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <form>
+                                                      <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Name</label>
+                                                        <input type="text" placeholder="First Name"  name='fname'[(ngModel)]='data.fname'class="form-control" id="recipient-name">
+                                                        <input type="text"  placeholder="Last Name"  name='lname'[(ngModel)]='data.lname' class="form-control" id="recipient-name">
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Subject</label>
+                                                        <input type="text" class="form-control" id="recipient-name"  name='suject' [(ngModel)]='data.suject'>
+
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Result</label>
+                                                        <input type="text" class="form-control" id="recipient-name" name='result'[(ngModel)]='data.result'>
+
+                                                      </div>
+
+                                                    </form>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-success" (click)="editdata(result.$key)">Save </button>
+                                                  </div>
+                                                </div>
+                                               </div>
+                                              </div>
+                  </td>
+                    <td><button class='btn btn-danger' (click)="delete(result.$key)"> delete</button></td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row"></th>
+                    <td ></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+              </tbody>
+           </table>
+         </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+
